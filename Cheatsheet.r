@@ -219,3 +219,11 @@ colnames(USArrests) # Can be used to update
 rownames(USArrests)
 # First number is row number, Second is collumn number
 USArrests[1, 1]
+
+# Functions in R
+fun.mean <- function(x) {
+    prod.x <- prod(x)
+    n <- length(x)
+    gm <- prod.x^(1/n)
+    return(gm)
+}
