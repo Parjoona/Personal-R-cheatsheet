@@ -190,4 +190,32 @@ probabilityvar <- table(cut(airquality[,4], pretty(airquality[,4])), airquality[
 prop.table(probabilityvar, 1)
 
 # Setting out working directory to R in documents
-setwd("C:\\Users\\Pauma\\Documents\\R")
+setwd("C:\\Users\\Pauma\\Documents\\R\\Cheatsheet")
+# Opens content from txt file, removes header in file
+fileOne <- read.table("http://rstatistics.net/wp-content/uploads/2015/07/exported_pipe.txt", header = F)
+# Writes a new file, in csv format, and remove row numbers with row.names = FALSE
+write.csv(fileOne, "exported_pipe.csv", row.names = F)
+# Fill fils up missing values, header looks at first row as names or not
+fileTwo <- read.table("bbc.txt", fill = T, header = F)
+write.csv(fileTwo, "bbc.csv", row.names = F, sep = "\t") # separator can be \n or \t, e.x
+# Alternative to reading files
+# read.table("clipboard") # Takes what you copy paste functionality
+
+# colClasses automaticly format lists, nrow returns specified amount of rows
+# skip = skips chosen lines
+sampletxt <- read.table("sample.txt", fill = T , header = F, colClasses = c("character", "character", "character", "character"), nrow = 10)
+
+# how to import
+library(datasets) # Can write help = {specific dataset} ### ?USArrests gives information about datasets
+summary(USArrests) # Gives summary
+# Short summary, with the use of all datasets
+fivenum(USArrests) # Minimum, Low hinge, Median, Upper Hinge, Maximum
+
+# Gives back the structure of the dataset
+str(USArrests)
+# Returns the collumn names 
+colnames(USArrests) # Can be used to update
+# Returns the row names
+rownames(USArrests)
+# First number is row number, Second is collumn number
+USArrests[1, 1]
