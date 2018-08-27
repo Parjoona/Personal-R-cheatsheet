@@ -188,6 +188,8 @@ probabilityvar <- table(cut(airquality[,4], pretty(airquality[,4])), airquality[
 # Using prop.table you can can estimate the chance for the certain temperature
 # Adding secound argument 1 or two will add the row | collumn to be 1 in total (percentage chance)
 prop.table(probabilityvar, 1)
+# Using subsets to find specific days
+subset(dataFrame, subset = dataFrame == NA)
 
 # Setting out working directory to R in documents
 setwd("C:\\Users\\Pauma\\Documents\\R\\Cheatsheet")
@@ -244,6 +246,21 @@ colnames(stock.matrix) <- days
 # Setting row name for stock names
 rownames(stock.matrix) <- st.names
 
-# Linear algebra matrix mathmatics
+# Combines column values
+colSums(stock.matrix)
+# Combines each row values
+rowSums(stock.matrix)
+
+# Counts the mean for matrix
+rowMeans(stock.matrix)
+
+# Bind together new stocks to matrix
+fb <- c(111,112,113,115,119)
+tech.stocks <- rbind(stock.matrix, fb)
+tech.average <- rowMeans(tech.stock)
+# Bidning together stocks
+tech.stocks <- cbind(tech.stocks, tech.average)
+
+# Linear multiplication matrix mathmatics
 matri <- matrix(1:25, byrow=T, nrow=5)
 linear <- matri %*% matri
