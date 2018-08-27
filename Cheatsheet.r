@@ -227,3 +227,7 @@ fun.mean <- function(x) {
     gm <- prod.x^(1/n)
     return(gm)
 }
+
+# Linear algebra matrix mathmatics
+matri <- matrix(1:25, byrow=T, nrow=5)
+linear <- matri %*% matri
