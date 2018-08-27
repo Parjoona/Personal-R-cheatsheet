@@ -228,6 +228,22 @@ fun.mean <- function(x) {
     return(gm)
 }
 
+# Matrix
+goog <- c(450, 451, 452, 455, 465)
+msft <- c(231, 233, 254, 234, 233)
+
+stocks <- c(goog, msft)
+
+# Creates 2 dimensional matrix
+stock.matrix <- matrix(stocks, byrow=T, nrow=2)
+days <- c('Mon', 'Tue', 'Wed', 'Thu', 'Fri')
+st.names <- c('Google', 'Microsoft')
+
+# Setting column name for days
+colnames(stock.matrix) <- days
+# Setting row name for stock names
+rownames(stock.matrix) <- st.names
+
 # Linear algebra matrix mathmatics
 matri <- matrix(1:25, byrow=T, nrow=5)
 linear <- matri %*% matri
