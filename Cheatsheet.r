@@ -207,6 +207,11 @@ write.csv(fileTwo, "bbc.csv", row.names = F, sep = "\t") # separator can be \n o
 # skip = skips chosen lines
 sampletxt <- read.table("sample.txt", fill = T , header = F, colClasses = c("character", "character", "character", "character"), nrow = 10)
 
+# Using excel files with R
+library(readxl)
+excel_cheets("example.xlsx") # Used to find sheets in the document
+read_excel("example.xlsx")
+
 # how to import
 library(datasets) # Can write help = {specific dataset} ### ?USArrests gives information about datasets
 summary(USArrests) # Gives summary
