@@ -211,8 +211,26 @@ sampletxt <- read.table("sample.txt", fill = T , header = F, colClasses = c("cha
 library(readxl)
 excel_cheets("example.xlsx") # Used to find sheets in the document
 read_excel("example.xlsx", sheet = "Sheet1")
+write.xlsx(mtcars, "output.xlsx") # writes XLSX
 # Returns a list function of the whole excel workbook
 lapply(excel_cheets("example.xlsx"), read_excel, path="example.xlsx")
+
+# Connect to a SQL DB
+install.packages("RODBC") # SQL library
+library(RODBC)
+# EXAMPLE
+conn <- odbcConnect("dbname", uid="userid", pwd="password") # connection
+q <- sqlFetch(conn, "tablename")
+query <- sqlQuery(conn, "SELECT * FROM tablename")
+close(conn)
+###### Interfaces #######
+## MySQL package = RMySQL
+## Oracle package = ROracle
+## JDBC package = RJDBC
+
+# Webscraping with R
+library(rvest)
+
 # how to import
 library(datasets) # Can write help = {specific dataset} ### ?USArrests gives information about datasets
 summary(USArrests) # Gives summary
