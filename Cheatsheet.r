@@ -210,8 +210,9 @@ sampletxt <- read.table("sample.txt", fill = T , header = F, colClasses = c("cha
 # Using excel files with R
 library(readxl)
 excel_cheets("example.xlsx") # Used to find sheets in the document
-read_excel("example.xlsx")
-
+read_excel("example.xlsx", sheet = "Sheet1")
+# Returns a list function of the whole excel workbook
+lapply(excel_cheets("example.xlsx"), read_excel, path="example.xlsx")
 # how to import
 library(datasets) # Can write help = {specific dataset} ### ?USArrests gives information about datasets
 summary(USArrests) # Gives summary
