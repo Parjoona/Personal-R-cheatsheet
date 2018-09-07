@@ -75,3 +75,21 @@ sample_frac(flights, 0.1) # Returns a fraction of rows (%)
 library(tidyr) # Cleaning Data
 gather(df, Quarter, Revenue, Quarter1:Quarter4) # Collapses multiple columns into fewer
 spread(stocks, price) # Reverses the gather
+separate(df, which.to.separate, c('col1','col2')) # separates using values thats non characters etc.
+unite(df, joined.col, col1, col2) # Reverses the separate
+
+# 3 first layers of data visualization with GGPLOT2
+# Data 
+# Aestehtics = aes(x=, y=)
+# Geometry 
+
+library(ggplot2)
+ggplot(data = mtcars) # Data
+pl <- ggplot(data = mtcars, aes(x = mpg, y = hp)) # Aestehtics
+pl <- pl + geom_point() # Geomtry
+
+# 3 next layers of GGPLOT 2
+# Facets - lets us put multiple plots on the same grid
+# Statistics
+# Coordinates
+pl <- pl + facets_grid(cyl ~ .) # Separates the plots depending on how many cylinders they have
