@@ -101,6 +101,6 @@ library(ggplot2movies) # (movies)
 # Histogram
 # Data & Aesthetics
 movpl <- ggplot(movies, aes(x=rating)) # only need x
-movpl2 <- movpl + geom_histogram(binwidth = 0.1) # Prints a histogram with ratings
+movpl2 <- movpl + geom_histogram(binwidth = 0.1, aes(fill=..count..)) # Prints a histogram with ratings
 movpl3 <- xlab('Movie Rating') + ylab('Count') # Labeling the x and y
 print(movpl3 + ggtitle("Title"))
