@@ -78,18 +78,29 @@ spread(stocks, price) # Reverses the gather
 separate(df, which.to.separate, c('col1','col2')) # separates using values thats non characters etc.
 unite(df, joined.col, col1, col2) # Reverses the separate
 
-# 3 first layers of data visualization with GGPLOT2
-# Data 
-# Aestehtics = aes(x=, y=)
-# Geometry 
-
+# Layers of data visualization with GGPLOT2
 library(ggplot2)
+# Data - library
+# Aestehtics = aes(x=, y=)
+# Geometry - geom_point()
+# Facets - lets us put multiple plots on the same grid
+# Statistics - facets_grid() gives the extra layers
+# Coordinates -coord_cartesian(xlim = vector)
 ggplot(data = mtcars) # Data
 pl <- ggplot(data = mtcars, aes(x = mpg, y = hp)) # Aestehtics
 pl <- pl + geom_point() # Geomtry
+pl <- pl + facet_grid(cyl ~ .) # Separates the plots depending on how many cylinders they have
+pl2 <- pl + stat_smooth() # Smoothing out the curves
+pl2 <- coord_cartesian(xlim = c(15:25))
+# Theme layer - adding to the theme layer
+pl2 <- pl2 + theme_bw()
 
-# 3 next layers of GGPLOT 2
-# Facets - lets us put multiple plots on the same grid
-# Statistics
-# Coordinates
-pl <- pl + facets_grid(cyl ~ .) # Separates the plots depending on how many cylinders they have
+# Using ggplot2movies library
+install.packages('ggplot2movies')
+library(ggplot2movies) # (movies)
+# Histogram
+# Data & Aesthetics
+movpl <- ggplot(movies, aes(x=rating)) # only need x
+movpl2 <- movpl + geom_histogram(binwidth = 0.1) # Prints a histogram with ratings
+movpl3 <- xlab('Movie Rating') + ylab('Count') # Labeling the x and y
+print(movpl3 + ggtitle("Title"))
