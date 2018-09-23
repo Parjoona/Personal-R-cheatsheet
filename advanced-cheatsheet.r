@@ -104,3 +104,41 @@ movpl <- ggplot(movies, aes(x=rating)) # only need x
 movpl2 <- movpl + geom_histogram(binwidth = 0.1, aes(fill=..count..)) # Prints a histogram with ratings
 movpl3 <- xlab('Movie Rating') + ylab('Count') # Labeling the x and y
 print(movpl3 + ggtitle("Title"))
+
+# Scatterplots
+carpl <- ggplot(mtcars, aes(x=wt, y=mpg)) # DATA / AES
+carpl <- carpl + geom_point(aes(size=hp)) # Bigger size depending on the hp
+
+# Barplots - Categorical data
+barpl <- ggplot(mpg, aes(x = class))
+barplcolor <- barpl + geom_bar()# geom_bar specifies a barplot
+barplcolor <- barpl+ geom_bar(aes(fill=drv), position = 'dodge') # Splits up positions
+
+# Boxplot - Depicting data of numerical data
+boxpl <- ggplot(mtcars, aes(x = factor(cyl), y = mpg))
+boxplot <- boxpl + geom_boxplot()
+
+# Two variable plots
+twovpl <- ggplot(movies, aes(x = year, y = rating) + geom_bin2d())
+twovpl <- twovpl + scale_fill_gradient(high = 'red', low = 'blue')
+    # install.package('hexbin')
+twovpl <- twovpl + geom_hex() / geom_density2d() # Gives a hex pattern
+
+# Working with Coordinates and Faceting
+# Coordinates - Resize the plots
+# Faceting - Allows us to place more plots at the side of eachother
+pl <- ggplot(mpg, aes(x = displ, y = hwy)) + geom_point()
+# xlim / ylim takes vectors as arguments
+pl + coord_cartesian(xlim = c(1,4), ylim = c(15, 30))
+pl + coord_fixed(ratio = 1/3) # Resizes the plot
+# creates multiple grids with facet_grid()
+pl + facet_grid(. ~ cyl) # the . is the x axis, the cyl is the y axis
+
+# Themes
+# Set global theme
+theme_set(theme_minimal())
+pl <- ggplot(mtcars, aes(x = wt, y = mpg)) + geom_point()
+pl + theme_dart()
+# Install more themes
+install.package('ggthemes')
+library(ggthemes)
