@@ -135,10 +135,24 @@ pl + coord_fixed(ratio = 1/3) # Resizes the plot
 pl + facet_grid(. ~ cyl) # the . is the x axis, the cyl is the y axis
 
 # Themes
-# Set global theme
-theme_set(theme_minimal())
+theme_set(theme_minimal()) # Set global theme
 pl <- ggplot(mtcars, aes(x = wt, y = mpg)) + geom_point()
 pl + theme_dart()
 # Install more themes
 install.package('ggthemes')
 library(ggthemes)
+
+
+# Plotly - Interactive ggplots
+'https://plot.ly/ggplot2'
+
+install.packages('plotly')
+library(ggplot2)
+library(plotly)
+gplo <- ggplot(mtcars, aes(mpg,wt)) + geom_point()
+# pass in plot in ggplotly
+gplot <- ggplotly(gplo)
+
+# Any type of GGPLOT2 visualization
+'http://ropensci.github.io/plotly-test-table/tables/0e3d5ca144d27d8416318824c1b6ec1421a51045/index.html'
+
