@@ -26,3 +26,12 @@ Unsupervised learning
 # Explores data to find structure
 # Uses for example, learnest neightbor mapping
 # k-means clustering or single value decomposition
+
+Reinforcement learning
+# Used in robotics, gaming and navigation
+# Discovers through trial and error
+# Greatest reward gives highest "points"
+# 3 components (agent: learner / decision maker)
+# (environment: everything it interacts with)
+# (actions: everything it does)
+
